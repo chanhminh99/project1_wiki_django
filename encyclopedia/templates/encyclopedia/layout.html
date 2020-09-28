@@ -15,17 +15,17 @@
                 <form>
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia" autocomplete="off">
                 </form>
-                <div>
-                    <a href="{% url 'encyclopedia:index' %}">Home</a>
-                </div>
-                <div>
-                    Create New Page
-                </div>
-                <div>
-                    Random Page
-                </div>
+
                 {% block nav %}
                 {% endblock %}
+                
+                <div class="sidebar__item">
+                    <a class="sidebar__item-link" href="{% url 'encyclopedia:wiki_add' %}">Create New Page</a>
+                </div>
+                <div class="sidebar__item">
+                    <a class="sidebar__item-link" href="">Random Page</a>
+                </div>
+                
             </div>
             <div class="main col-lg-10 col-md-9">
                 {% block body %}

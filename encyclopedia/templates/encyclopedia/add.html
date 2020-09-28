@@ -1,0 +1,38 @@
+{% extends 'encyclopedia/layout.html'%}
+
+{% block title %}
+    Add New Entry
+{% endblock%}
+
+{% block nav %}
+    <div class="sidebar__item">
+        <a class="sidebar__item-link" href="{% url 'encyclopedia:index' %}">Home</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <h1>Create New Entry</h1>
+    
+    <form action="{% url 'encyclopedia:wiki_add' %}" method="POST">
+        {% csrf_token %}
+        <div class="form__group">
+            {%for field in form%}
+                <label class="form__label" for="{{field.auto_id}}">{{field.label}}</label>
+                {{field}}
+                {% if field.label == "Title:" %}
+                <div class="separate"></div>
+                {% endif %}
+            {% endfor %}
+            <button class="btn btn-primary right" type="submit">Create</button>
+
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endif%}
+        </div>
+        
+    </form>
+
+    
+{% endblock %}

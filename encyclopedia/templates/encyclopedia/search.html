@@ -1,0 +1,30 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title%}
+    Search Page
+{% endblock %}
+
+{%block nav%}
+<div class="sidebar__item">
+    <a class="sidebar__item-link" href="{% url 'encyclopedia:index' %}">Home</a>
+</div>
+{% endblock %}
+
+{% block body%}
+    <h1>All Pages Search Result</h1>
+
+    <ul>
+        {% for entry in entries %}
+        <li>
+            <a href="{% url 'encyclopedia:wiki_page' page=entry %}">
+                {{ entry }}
+            </a>
+        </li>
+        {% empty %}
+        <li>
+            No entry
+        </li>
+        {% endfor %}
+        
+    </ul>
+{% endblock %}

@@ -8,6 +8,12 @@
     {% endif %}
 {% endblock %}
 
+{%block nav%}
+    <div class="sidebar__item">
+        <a class="sidebar__item-link active" href="{% url 'encyclopedia:index' %}">Home</a>
+    </div>
+{% endblock %}
+
 {% block body %}
     <h1>All Pages</h1>
 
