@@ -1,0 +1,39 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    Edit Entry
+{% endblock%}
+
+{% block nav %}
+<div class="sidebar__item">
+    <a class="sidebar__item-link" href="{% url 'encyclopedia:index' %}">Home</a>
+</div>
+{% endblock %}
+
+{% block body %}
+<h1>Edit the entry</h1>
+
+<form action="{% url 'encyclopedia:wiki_edit' page=page %}" method="POST">
+    {% csrf_token %}
+    <div class="form__group">
+        
+        <label class="form__label">Title:</label>
+        <input type="text" name="title" value="{{page}}" disabled>
+        
+        <div class="separate"></div>
+        <label class="form__label">Content:</label>
+        <textarea name="content">{{content}}</textarea>
+        
+        <button class="btn btn-primary right" type="submit">Save Change</button>
+
+        <!-- {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+        {% endif%} -->
+    </div>
+
+</form>
+
+
+{% endblock %}

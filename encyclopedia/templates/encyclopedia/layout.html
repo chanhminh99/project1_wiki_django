@@ -12,19 +12,14 @@
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
-                <form>
+                <form action="{% url 'encyclopedia:wiki_search' %}" method="POST">
+                    {% csrf_token %}
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia" autocomplete="off">
                 </form>
 
                 {% block nav %}
                 {% endblock %}
                 
-                <div class="sidebar__item">
-                    <a class="sidebar__item-link" href="{% url 'encyclopedia:wiki_add' %}">Create New Page</a>
-                </div>
-                <div class="sidebar__item">
-                    <a class="sidebar__item-link" href="">Random Page</a>
-                </div>
                 
             </div>
             <div class="main col-lg-10 col-md-9">

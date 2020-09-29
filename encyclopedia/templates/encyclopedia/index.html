@@ -12,6 +12,12 @@
     <div class="sidebar__item">
         <a class="sidebar__item-link active" href="{% url 'encyclopedia:index' %}">Home</a>
     </div>
+    <div class="sidebar__item">
+        <a class="sidebar__item-link" href="{% url 'encyclopedia:wiki_add' %}">Create New Page</a>
+    </div>
+    <div class="sidebar__item">
+        <a class="sidebar__item-link" href="{% url 'encyclopedia:wiki_random' %}">Random Page</a>
+    </div>
 {% endblock %}
 
 {% block body %}

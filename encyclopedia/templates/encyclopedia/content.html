@@ -5,14 +5,40 @@
 {% endblock %}
 
 {%block nav%}
-    <div class="sidebar__item">
-        <a class="sidebar__item-link" href="{% url 'encyclopedia:index' %}">Home</a>
-    </div>
+    {% if isRandom %}
+        <div class="sidebar__item">
+            <a class="sidebar__item-link" href="{% url 'encyclopedia:index' %}">Home</a>
+        </div>
+        <div class="sidebar__item">
+            <a class="sidebar__item-link" href="{% url 'encyclopedia:wiki_add' %}">Create New Page</a>
+        </div>
+        <div class="sidebar__item">
+            <a class="sidebar__item-link active" href="{% url 'encyclopedia:wiki_random' %}">Random Page</a>
+        </div>
+    {% else %}
+        <div class="sidebar__item">
+            <a class="sidebar__item-link" href="{% url 'encyclopedia:index' %}">Home</a>
+        </div>
+        <div class="sidebar__item">
+            <a class="sidebar__item-link" href="{% url 'encyclopedia:wiki_add' %}">Create New Page</a>
+        </div>
+        <div class="sidebar__item">
+            <a class="sidebar__item-link" href="{% url 'encyclopedia:wiki_random' %}">Random Page</a>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block body%}
     {% if content %}
-        <h1>{{page}}</h1>
+        <div class="header">
+            <h1 class="header__title">Wikipedia: {{page}}</h1>
+            <button class="btn btn-primary header__button">
+                <a class="header__button-link" href="{% url 'encyclopedia:wiki_edit' page=page %}">Edit Page</a>
+            </button>
+        </div>
+        <div class="separate"></div>
+
+        {{content|safe}}
     {% else %}
         <div class="error-template">
             <h1>Oops!</h1>
