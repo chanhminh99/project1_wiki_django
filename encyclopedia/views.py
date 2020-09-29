@@ -96,15 +96,16 @@ def wiki_edit(request,page):
 
 def wiki_random(request):
     entries = util.list_entries()
-    markdowner = Markdown()
+    
    
     if not len(entries):
-        
         return render(request,'encyclopedia/content.html', {
-            "page": entries[0]
+            "page": '404 Page',
+            "isRandom": True
         })
     else:
         page = choice(entries)
+        markdowner = Markdown()
         content_md = util.get_entry(page)
         content_html = markdowner.convert(content_md)
         return render(request,'encyclopedia/content.html', {
